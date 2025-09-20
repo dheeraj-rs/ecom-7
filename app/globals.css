@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-forest-dark text-forest-light leading-relaxed;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(34, 139, 34, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(139, 115, 85, 0.1) 0%, transparent 50%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a2e1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #8b4513;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #deb887;
+  }
+}
+
+@layer components {
+  /* Video Background */
+  .video-background {
+    @apply absolute inset-0 w-full h-full object-cover z-0;
+    filter: brightness(0.3) contrast(1.2) saturate(1.1);
+  }
+
+  .video-overlay {
+    @apply absolute inset-0 z-10;
+    background: linear-gradient(to bottom, rgba(26, 46, 26, 0.6), rgba(26, 46, 26, 0.4), rgba(26, 46, 26, 0.8));
+  }
+
+  /* Wood Texture Overlay */
+  .wood-texture {
+    background-image: 
+      repeating-linear-gradient(
+        90deg,
+        rgba(139, 115, 85, 0.1) 0px,
+        transparent 2px,
+        transparent 4px,
+        rgba(139, 115, 85, 0.05) 6px
+      );
+  }
+
+  /* Custom Button Styles */
+  .btn-forest {
+    @apply px-8 py-4 text-forest-light font-semibold rounded-lg 
+           shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300
+           border backdrop-blur-sm;
+    background: linear-gradient(to right, #8b4513, #deb887);
+    border-color: rgba(222, 184, 135, 0.2);
+  }
+
+  .btn-forest:hover {
+    background: linear-gradient(to right, #deb887, #daa520);
+  }
+
+  .btn-outline-forest {
+    @apply px-8 py-4 border-2 font-semibold rounded-lg
+           hover:bg-wood-light hover:text-forest-dark transition-all duration-300
+           backdrop-blur-sm;
+    border-color: #deb887;
+    color: #deb887;
+  }
+
+  /* Section Styles */
+  .section-forest {
+    @apply py-20 px-6 relative overflow-hidden;
+  }
+
+  .section-forest::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(to bottom right, transparent, rgba(45, 74, 45, 0.1), transparent);
+  }
+
+  /* Card Styles */
+  .card-forest {
+    @apply p-8 shadow-2xl
+           hover:shadow-2xl transition-all duration-500
+           hover:-translate-y-2 wood-texture rounded-xl border;
+    background: linear-gradient(to bottom right, rgba(45, 74, 45, 0.8), rgba(26, 46, 26, 0.8));
+    backdrop-filter: blur(16px);
+    border-color: rgba(222, 184, 135, 0.2);
+    box-shadow: 0 25px 50px -12px rgba(222, 184, 135, 0.2);
+  }
+
+  .card-forest:hover {
+    box-shadow: 0 25px 50px -12px rgba(222, 184, 135, 0.2);
+  }
+
+  /* Text Gradients */
+  .text-forest-gradient {
+    background: linear-gradient(to right, #deb887, #daa520, #b87333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-wood-gradient {
+    background: linear-gradient(to right, #8b4513, #deb887, #daa520);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Parallax Effect */
+  .parallax-element {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Animations */
+  .fade-in-up {
+    @apply opacity-0 translate-y-12 transition-all duration-700 ease-out;
+  }
+
+  .fade-in-up.animate {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .scale-in {
+    @apply opacity-0 scale-95 transition-all duration-500 ease-out;
+  }
+
+  .scale-in.animate {
+    @apply opacity-100 scale-100;
+  }
+
+  /* Wood Grain Pattern */
+  .wood-grain {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        rgba(139, 69, 19, 0.1) 0px,
+        transparent 2px,
+        transparent 4px,
+        rgba(139, 69, 19, 0.05) 6px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(222, 184, 135, 0.05) 0px,
+        transparent 1px,
+        transparent 3px,
+        rgba(222, 184, 135, 0.1) 4px
+      );
+  }
+}
+
+@layer utilities {
+  .text-shadow-forest {
+    text-shadow: 2px 2px 4px rgba(26, 46, 26, 0.5);
+  }
+
+  .container-forest {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  .heading-forest {
+    @apply font-playfair-display text-4xl md:text-6xl font-bold mb-6 text-shadow-forest;
+    background: linear-gradient(to right, #deb887, #daa520, #b87333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subheading-forest {
+    @apply font-lora text-xl md:text-2xl mb-8 leading-relaxed;
+    color: #deb887;
+  }
+}
